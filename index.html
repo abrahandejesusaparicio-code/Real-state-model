@@ -1,1 +1,182 @@
-..
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dream Homes Real Estate</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Navbar -->
+  <header class="fixed w-full bg-white/70 backdrop-blur-md shadow z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+      <h1 class="text-2xl font-bold text-teal-600">DreamHomes</h1>
+      <nav class="space-x-6 hidden md:flex">
+        <a href="#properties" class="hover:text-teal-600">Properties</a>
+        <a href="#about" class="hover:text-teal-600">About</a>
+        <a href="#testimonials" class="hover:text-teal-600">Testimonials</a>
+        <a href="#contact" class="hover:text-teal-600">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative h-screen flex items-center justify-center bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1560185008-d0c7d1b9b28c');">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative text-center text-white px-4">
+      <h2 class="text-4xl md:text-6xl font-bold mb-4">
+        Find <span id="typed"></span>
+      </h2>
+      <p class="mb-6 text-lg">Your trusted partner in buying and selling homes</p>
+      <!-- Search Bar -->
+      <div class="bg-white rounded-xl flex flex-col md:flex-row shadow-lg overflow-hidden max-w-2xl mx-auto">
+        <input type="text" placeholder="Location" class="px-4 py-3 flex-1 outline-none">
+        <input type="text" placeholder="Price Range" class="px-4 py-3 flex-1 outline-none border-t md:border-t-0 md:border-l">
+        <input type="text" placeholder="Property Type" class="px-4 py-3 flex-1 outline-none border-t md:border-t-0 md:border-l">
+        <button class="bg-teal-600 text-white px-6 py-3 hover:bg-teal-700">Search</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Properties -->
+  <section id="properties" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-10" data-aos="fade-up">Featured Properties</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Card -->
+        <div class="bg-white shadow-lg rounded-xl overflow-hidden hover:scale-105 transition" data-aos="zoom-in">
+          <img src="https://images.unsplash.com/photo-1572120360610-d971b9d7767c" class="w-full h-56 object-cover">
+          <div class="p-6 text-left">
+            <h4 class="font-semibold text-lg">Modern Family House</h4>
+            <p class="text-teal-600 font-bold">$350,000</p>
+            <p class="text-sm text-gray-600">3 Bed • 2 Bath • 1,800 sqft</p>
+          </div>
+        </div>
+        <!-- Card -->
+        <div class="bg-white shadow-lg rounded-xl overflow-hidden hover:scale-105 transition" data-aos="zoom-in">
+          <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be" class="w-full h-56 object-cover">
+          <div class="p-6 text-left">
+            <h4 class="font-semibold text-lg">Luxury Villa</h4>
+            <p class="text-teal-600 font-bold">$1,200,000</p>
+            <p class="text-sm text-gray-600">5 Bed • 4 Bath • 4,500 sqft</p>
+          </div>
+        </div>
+        <!-- Card -->
+        <div class="bg-white shadow-lg rounded-xl overflow-hidden hover:scale-105 transition" data-aos="zoom-in">
+          <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994" class="w-full h-56 object-cover">
+          <div class="p-6 text-left">
+            <h4 class="font-semibold text-lg">Urban Apartment</h4>
+            <p class="text-teal-600 font-bold">$220,000</p>
+            <p class="text-sm text-gray-600">2 Bed • 1 Bath • 900 sqft</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section id="about" class="py-16">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-12" data-aos="fade-up">Why Choose Us</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="p-6 bg-white shadow rounded-xl" data-aos="fade-up">
+          <h4 class="font-semibold text-xl mb-2">Trusted Agents</h4>
+          <p class="text-gray-600">Our team is dedicated to guiding you every step of the way.</p>
+        </div>
+        <div class="p-6 bg-white shadow rounded-xl" data-aos="fade-up" data-aos-delay="200">
+          <h4 class="font-semibold text-xl mb-2">Best Prices</h4>
+          <p class="text-gray-600">We ensure you get the best deals in the market.</p>
+        </div>
+        <div class="p-6 bg-white shadow rounded-xl" data-aos="fade-up" data-aos-delay="400">
+          <h4 class="font-semibold text-xl mb-2">Local Expertise</h4>
+          <p class="text-gray-600">Deep knowledge of neighborhoods and hidden gems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Neighborhood -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-12" data-aos="fade-up">Discover Neighborhoods</h3>
+      <div class="grid md:grid-cols-3 gap-6">
+        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb" class="rounded-xl shadow-md" data-aos="zoom-in">
+        <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511" class="rounded-xl shadow-md" data-aos="zoom-in" data-aos-delay="200">
+        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156" class="rounded-xl shadow-md" data-aos="zoom-in" data-aos-delay="400">
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-16">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-12" data-aos="fade-up">What Our Clients Say</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white shadow rounded-xl p-6" data-aos="fade-up">
+          <p class="italic mb-4">“They helped us find the perfect home quickly and professionally.”</p>
+          <p class="font-semibold">– Sarah W.</p>
+        </div>
+        <div class="bg-white shadow rounded-xl p-6" data-aos="fade-up" data-aos-delay="200">
+          <p class="italic mb-4">“The best real estate team we’ve ever worked with.”</p>
+          <p class="font-semibold">– Michael T.</p>
+        </div>
+        <div class="bg-white shadow rounded-xl p-6" data-aos="fade-up" data-aos-delay="400">
+          <p class="italic mb-4">“Excellent service, great deals, and very knowledgeable.”</p>
+          <p class="font-semibold">– Laura R.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="py-16 bg-teal-600 text-white text-center">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+      <div data-aos="zoom-in">
+        <h4 class="text-4xl font-bold">500+</h4>
+        <p>Homes Sold</p>
+      </div>
+      <div data-aos="zoom-in" data-aos-delay="200">
+        <h4 class="text-4xl font-bold">50+</h4>
+        <p>Expert Agents</p>
+      </div>
+      <div data-aos="zoom-in" data-aos-delay="400">
+        <h4 class="text-4xl font-bold">15+</h4>
+        <p>Years Experience</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="py-16 bg-gray-900 text-white text-center">
+    <h3 class="text-3xl font-bold mb-4">Ready to Sell or Buy Your Home?</h3>
+    <p class="mb-6">Get in touch with our expert agents today</p>
+    <a href="#" class="bg-teal-600 hover:bg-teal-700 px-8 py-4 rounded-lg font-semibold">Contact Us</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 py-8 text-center text-gray-600">
+    <p>&copy; 2025 DreamHomes Real Estate. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    new Typed('#typed', {
+      strings: ["Your Dream Home", "Your Perfect Space", "Your Investment"],
+      typeSpeed: 70,
+      backSpeed: 50,
+      loop: true
+    });
+  </script>
+</body>
+</html>
