@@ -219,10 +219,16 @@
     </a>
   </section>
 
-  <!-- Footer -->
+    <!-- Footer -->
   <footer class="bg-gray-100 py-8 text-center text-gray-600">
     <p class="transition-opacity hover:opacity-80">&copy; 2025 DreamHomes Real Estate. All rights reserved.</p>
   </footer>
+
+  <!-- Scroll To Top Button -->
+  <button id="toTopBtn" 
+    class="hidden fixed bottom-6 right-6 bg-teal-600 text-white p-4 rounded-full shadow-lg hover:bg-teal-700 hover:scale-110 transition-all duration-300 btn-shine z-50">
+    ↑
+  </button>
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -234,6 +240,20 @@
       backSpeed: 50,
       loop: true
     });
+
+    // Scroll to top button logic
+    const toTopBtn = document.getElementById("toTopBtn");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        toTopBtn.classList.remove("hidden");
+      } else {
+        toTopBtn.classList.add("hidden");
+      }
+    });
+    toTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
   </script>
 </body>
 </html>
+
