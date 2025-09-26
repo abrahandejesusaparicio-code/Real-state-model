@@ -13,16 +13,21 @@
     body { font-family: 'Inter', sans-serif; }
     html { scroll-behavior: smooth; }
 
-    /* Fancy underline for nav links */
-    .nav-link{
-      position:relative;
-      background-image: linear-gradient(currentColor, currentColor);
-      background-size: 0% 2px;
-      background-position: 0 100%;
-      background-repeat: no-repeat;
-      transition: background-size .25s ease, color .25s ease, opacity .25s ease;
-    }
-    .nav-link:hover{ background-size: 100% 2px; }
+ /* Fancy gradient + underline for nav links */
+.nav-link {
+  position: relative;
+  background-image: linear-gradient(to right, #14b8a6, #0ea5e9); /* teal → blue */
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size .3s ease, color .3s ease;
+}
+.nav-link:hover {
+  background-size: 100% 2px;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
 
     /* Subtle “shine” sweep on buttons */
     .btn-shine{ position:relative; overflow:hidden; }
