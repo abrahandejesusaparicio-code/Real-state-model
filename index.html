@@ -12,6 +12,33 @@
   <style>
     body { font-family: 'Inter', sans-serif; }
     html { scroll-behavior: smooth; }
+
+    /* Fancy underline for nav links */
+    .nav-link{
+      position:relative;
+      background-image: linear-gradient(currentColor, currentColor);
+      background-size: 0% 2px;
+      background-position: 0 100%;
+      background-repeat: no-repeat;
+      transition: background-size .25s ease, color .25s ease, opacity .25s ease;
+    }
+    .nav-link:hover{ background-size: 100% 2px; }
+
+    /* Subtle “shine” sweep on buttons */
+    .btn-shine{ position:relative; overflow:hidden; }
+    .btn-shine::before{
+      content:""; position:absolute; inset:-150% -50%;
+      transform: translateX(-120%) rotate(20deg);
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.35) 50%, transparent 100%);
+      transition: transform .6s ease;
+      will-change: transform;
+    }
+    .btn-shine:hover::before{ transform: translateX(120%) rotate(20deg); }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+    }
   </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -19,12 +46,12 @@
   <!-- Navbar -->
   <header class="fixed w-full bg-white/70 backdrop-blur-md shadow z-50">
     <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-      <h1 class="text-2xl font-bold text-teal-600">DreamHomes</h1>
+      <h1 class="text-2xl font-bold text-teal-600 hover:opacity-80 transition-opacity">DreamHomes</h1>
       <nav class="space-x-6 hidden md:flex">
-        <a href="#properties" class="hover:text-teal-600">Properties</a>
-        <a href="#about" class="hover:text-teal-600">About</a>
-        <a href="#testimonials" class="hover:text-teal-600">Testimonials</a>
-        <a href="#contact" class="hover:text-teal-600">Contact</a>
+        <a href="#properties" class="nav-link hover:text-teal-600">Properties</a>
+        <a href="#about" class="nav-link hover:text-teal-600">About</a>
+        <a href="#testimonials" class="nav-link hover:text-teal-600">Testimonials</a>
+        <a href="#contact" class="nav-link hover:text-teal-600">Contact</a>
       </nav>
     </div>
   </header>
@@ -45,14 +72,15 @@
       <h2 class="text-4xl md:text-6xl font-bold mb-4">
         Find <span id="typed"></span>
       </h2>
-      <p class="mb-6 text-lg">Your trusted partner in buying and selling homes</p>
+      <p class="mb-6 text-lg opacity-90">Your trusted partner in buying and selling homes</p>
       <!-- Search Bar -->
-      <div class="bg-white rounded-xl flex flex-col md:flex-row shadow-lg overflow-hidden max-w-2xl mx-auto">
-        <input type="text" placeholder="Location" class="px-4 py-3 flex-1 outline-none">
-        <input type="text" placeholder="Price Range" class="px-4 py-3 flex-1 outline-none border-t md:border-t-0 md:border-l">
-        <input type="text" placeholder="Property Type" class="px-4 py-3 flex-1 outline-none border-t md:border-t-0 md:border-l">
-        <button class="bg-teal-600 text-white px-6 py-3 hover:bg-teal-700">Search</button>
+      <div class="bg-white rounded-xl flex flex-col md:flex-row shadow-lg overflow-hidden max-w-2xl mx-auto group">
+        <input type="text" placeholder="Location" class="px-4 py-3 flex-1 outline-none transition-colors focus:bg-gray-50">
+        <input type="text" placeholder="Price Range" class="px-4 py-3 flex-1 outline-none border-t md:border-t-0 md:border-l transition-colors focus:bg-gray-50">
+        <input type="text" placeholder="Property Type" class="px-4 py-3 flex-1 outline-none border-t md:border-t-0 md:border-l transition-colors focus:bg-gray-50">
+        <button class="bg-teal-600 text-white px-6 py-3 hover:bg-teal-700 transition-colors btn-shine">Search</button>
       </div>
+      <div class="mt-4 text-sm opacity-80 hover:opacity-100 transition-opacity cursor-default">Scroll to explore ↓</div>
     </div>
   </section>
 
@@ -60,34 +88,46 @@
   <section id="properties" class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-6 text-center">
       <h3 class="text-3xl font-bold mb-10" data-aos="fade-up">Featured Properties</h3>
+
       <div class="grid md:grid-cols-3 gap-8">
         <!-- Card -->
-        <div class="bg-white shadow-lg rounded-xl overflow-hidden hover:scale-105 transition" data-aos="zoom-in">
-          <img src="https://images.unsplash.com/photo-1572120360610-d971b9d7767c" class="w-full h-56 object-cover">
+        <article class="group bg-white shadow-lg rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 cursor-pointer" data-aos="zoom-in">
+          <div class="overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1572120360610-d971b9d7767c" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110">
+          </div>
           <div class="p-6 text-left">
-            <h4 class="font-semibold text-lg">Modern Family House</h4>
+            <h4 class="font-semibold text-lg transition-colors group-hover:text-teal-600">Modern Family House</h4>
             <p class="text-teal-600 font-bold">$350,000</p>
             <p class="text-sm text-gray-600">3 Bed • 2 Bath • 1,800 sqft</p>
+            <div class="mt-4 inline-flex items-center text-teal-700 font-medium transition-transform group-hover:translate-x-1">View details →</div>
           </div>
-        </div>
+        </article>
+
         <!-- Card -->
-        <div class="bg-white shadow-lg rounded-xl overflow-hidden hover:scale-105 transition" data-aos="zoom-in">
-          <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be" class="w-full h-56 object-cover">
+        <article class="group bg-white shadow-lg rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 cursor-pointer" data-aos="zoom-in">
+          <div class="overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110">
+          </div>
           <div class="p-6 text-left">
-            <h4 class="font-semibold text-lg">Luxury Villa</h4>
+            <h4 class="font-semibold text-lg transition-colors group-hover:text-teal-600">Luxury Villa</h4>
             <p class="text-teal-600 font-bold">$1,200,000</p>
             <p class="text-sm text-gray-600">5 Bed • 4 Bath • 4,500 sqft</p>
+            <div class="mt-4 inline-flex items-center text-teal-700 font-medium transition-transform group-hover:translate-x-1">View details →</div>
           </div>
-        </div>
+        </article>
+
         <!-- Card -->
-        <div class="bg-white shadow-lg rounded-xl overflow-hidden hover:scale-105 transition" data-aos="zoom-in">
-          <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994" class="w-full h-56 object-cover">
+        <article class="group bg-white shadow-lg rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 cursor-pointer" data-aos="zoom-in">
+          <div class="overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110">
+          </div>
           <div class="p-6 text-left">
-            <h4 class="font-semibold text-lg">Urban Apartment</h4>
+            <h4 class="font-semibold text-lg transition-colors group-hover:text-teal-600">Urban Apartment</h4>
             <p class="text-teal-600 font-bold">$220,000</p>
             <p class="text-sm text-gray-600">2 Bed • 1 Bath • 900 sqft</p>
+            <div class="mt-4 inline-flex items-center text-teal-700 font-medium transition-transform group-hover:translate-x-1">View details →</div>
           </div>
-        </div>
+        </article>
       </div>
     </div>
   </section>
@@ -97,15 +137,15 @@
     <div class="max-w-7xl mx-auto px-6 text-center">
       <h3 class="text-3xl font-bold mb-12" data-aos="fade-up">Why Choose Us</h3>
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="p-6 bg-white shadow rounded-xl" data-aos="fade-up">
+        <div class="p-6 bg-white shadow rounded-xl transition-all hover:shadow-xl hover:-translate-y-1" data-aos="fade-up">
           <h4 class="font-semibold text-xl mb-2">Trusted Agents</h4>
           <p class="text-gray-600">Our team is dedicated to guiding you every step of the way.</p>
         </div>
-        <div class="p-6 bg-white shadow rounded-xl" data-aos="fade-up" data-aos-delay="200">
+        <div class="p-6 bg-white shadow rounded-xl transition-all hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="200">
           <h4 class="font-semibold text-xl mb-2">Best Prices</h4>
           <p class="text-gray-600">We ensure you get the best deals in the market.</p>
         </div>
-        <div class="p-6 bg-white shadow rounded-xl" data-aos="fade-up" data-aos-delay="400">
+        <div class="p-6 bg-white shadow rounded-xl transition-all hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="400">
           <h4 class="font-semibold text-xl mb-2">Local Expertise</h4>
           <p class="text-gray-600">Deep knowledge of neighborhoods and hidden gems.</p>
         </div>
@@ -118,9 +158,15 @@
     <div class="max-w-7xl mx-auto px-6 text-center">
       <h3 class="text-3xl font-bold mb-12" data-aos="fade-up">Discover Neighborhoods</h3>
       <div class="grid md:grid-cols-3 gap-6">
-        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb" class="rounded-xl shadow-md" data-aos="zoom-in">
-        <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511" class="rounded-xl shadow-md" data-aos="zoom-in" data-aos-delay="200">
-        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156" class="rounded-xl shadow-md" data-aos="zoom-in" data-aos-delay="400">
+        <div class="overflow-hidden rounded-xl shadow-md transition-transform duration-500 hover:rotate-1 hover:scale-[1.03]" data-aos="zoom-in">
+          <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb" class="w-full h-full object-cover">
+        </div>
+        <div class="overflow-hidden rounded-xl shadow-md transition-transform duration-500 hover:-rotate-1 hover:scale-[1.03]" data-aos="zoom-in" data-aos-delay="200">
+          <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511" class="w-full h-full object-cover">
+        </div>
+        <div class="overflow-hidden rounded-xl shadow-md transition-transform duration-500 hover:rotate-1 hover:scale-[1.03]" data-aos="zoom-in" data-aos-delay="400">
+          <img src="https://images.unsplash.com/photo-1494526585095-c41746248156" class="w-full h-full object-cover">
+        </div>
       </div>
     </div>
   </section>
@@ -130,15 +176,15 @@
     <div class="max-w-7xl mx-auto px-6 text-center">
       <h3 class="text-3xl font-bold mb-12" data-aos="fade-up">What Our Clients Say</h3>
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white shadow rounded-xl p-6" data-aos="fade-up">
+        <div class="bg-white shadow rounded-xl p-6 transition-all hover:shadow-xl hover:-translate-y-1 hover:border-teal-500 border" data-aos="fade-up">
           <p class="italic mb-4">“They helped us find the perfect home quickly and professionally.”</p>
           <p class="font-semibold">– Sarah W.</p>
         </div>
-        <div class="bg-white shadow rounded-xl p-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="bg-white shadow rounded-xl p-6 transition-all hover:shadow-xl hover:-translate-y-1 hover:border-teal-500 border" data-aos="fade-up" data-aos-delay="200">
           <p class="italic mb-4">“The best real estate team we’ve ever worked with.”</p>
           <p class="font-semibold">– Michael T.</p>
         </div>
-        <div class="bg-white shadow rounded-xl p-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="bg-white shadow rounded-xl p-6 transition-all hover:shadow-xl hover:-translate-y-1 hover:border-teal-500 border" data-aos="fade-up" data-aos-delay="400">
           <p class="italic mb-4">“Excellent service, great deals, and very knowledgeable.”</p>
           <p class="font-semibold">– Laura R.</p>
         </div>
@@ -149,15 +195,15 @@
   <!-- Stats -->
   <section class="py-16 bg-teal-600 text-white text-center">
     <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
-      <div data-aos="zoom-in">
+      <div class="transition-transform duration-300 hover:scale-105" data-aos="zoom-in">
         <h4 class="text-4xl font-bold">500+</h4>
         <p>Homes Sold</p>
       </div>
-      <div data-aos="zoom-in" data-aos-delay="200">
+      <div class="transition-transform duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="200">
         <h4 class="text-4xl font-bold">50+</h4>
         <p>Expert Agents</p>
       </div>
-      <div data-aos="zoom-in" data-aos-delay="400">
+      <div class="transition-transform duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="400">
         <h4 class="text-4xl font-bold">15+</h4>
         <p>Years Experience</p>
       </div>
@@ -167,13 +213,15 @@
   <!-- CTA -->
   <section id="contact" class="py-16 bg-gray-900 text-white text-center">
     <h3 class="text-3xl font-bold mb-4">Ready to Sell or Buy Your Home?</h3>
-    <p class="mb-6">Get in touch with our expert agents today</p>
-    <a href="#" class="bg-teal-600 hover:bg-teal-700 px-8 py-4 rounded-lg font-semibold">Contact Us</a>
+    <p class="mb-6 opacity-90">Get in touch with our expert agents today</p>
+    <a href="#" class="inline-block bg-teal-600 hover:bg-teal-700 px-8 py-4 rounded-lg font-semibold transition-all btn-shine hover:-translate-y-0.5 hover:shadow-lg">
+      Contact Us
+    </a>
   </section>
 
   <!-- Footer -->
   <footer class="bg-gray-100 py-8 text-center text-gray-600">
-    <p>&copy; 2025 DreamHomes Real Estate. All rights reserved.</p>
+    <p class="transition-opacity hover:opacity-80">&copy; 2025 DreamHomes Real Estate. All rights reserved.</p>
   </footer>
 
   <!-- Scripts -->
